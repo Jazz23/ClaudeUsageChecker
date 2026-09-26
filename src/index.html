@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Usage</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="title">Weekly usage</span>
+      <span id="pct" class="pct">–</span>
+    </header>
+
+    <div class="bar" id="bar" role="meter" aria-valuemin="0" aria-valuemax="100" aria-label="Weekly usage">
+      <div class="fill" id="fill"></div>
+      <div class="now" id="now" hidden><span class="now-label" id="nowLabel"></span></div>
+    </div>
+
+    <div class="meta">
+      <span id="elapsed"></span>
+      <span id="resets"></span>
+    </div>
+
+    <div class="token-row">
+      <label for="path">Token file</label>
+      <input id="path" type="text" spellcheck="false" autocomplete="off" placeholder="Not found (macOS: Keychain is used)" />
+      <button id="browse" type="button">Find token path</button>
+      <button id="refresh" type="button" title="Refresh now" aria-label="Refresh now">↻</button>
+    </div>
+
+    <div id="status" class="status"></div>
+  </main>
+</body>
+</html>
