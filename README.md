@@ -21,13 +21,18 @@ When the access token has expired, the app refreshes it the same way Claude Code
 ```bash
 npm install
 npx tauri dev                 # run locally
-npx tauri build               # installer for the current OS
+npx tauri build --no-bundle   # portable binary, no installer
 ```
 
-Cross-compile a Windows installer from Linux (needs `nsis`, `lld`, `llvm`, and `cargo install cargo-xwin`):
+The app is portable, so no installer is needed:
+
+- **Windows:** run `Claude Usage Checker.exe` from anywhere. It needs the WebView2 runtime, which ships with Windows 10 and 11.
+- **macOS:** unzip `Claude Usage Checker-macos.zip` and run the `.app`. It isn't notarized, so the first time, right-click it and choose **Open**.
+
+Cross-compile the portable Windows exe from Linux (needs `lld`, `llvm`, and `cargo install cargo-xwin`):
 
 ```bash
-npx tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc
+npx tauri build --no-bundle --runner cargo-xwin --target x86_64-pc-windows-msvc
 ```
 
-macOS builds need a Mac. `.github/workflows/build.yml` builds a universal macOS `.dmg` and the Windows installers on GitHub Actions.
+macOS builds need a Mac. `.github/workflows/build.yml` builds both portable versions on GitHub Actions.
